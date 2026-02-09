@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1121945435.svg)](https://doi.org/10.5281/zenodo.18063098)
+
 # Institute Ice Stream 2D Model
 
 This repository contains MATLAB code for simulating two-dimensional cross-sectional ice stream dynamics using convex optimization. The model solves the ice flow problem using a variational formulation that minimizes total power dissipation subject to physical constraints.
@@ -44,11 +46,6 @@ The code implements a finite element method for solving ice flow equations with:
    - Unstructured triangular mesh generation
    - Must be in MATLAB path
 
-### MATLAB Built-in Functions
-
-- `heaviside` - Heaviside step function
-- `boundedges` - Boundary edge detection (from distmesh)
-
 ## Usage
 
 ### Running the Dimensional Model
@@ -68,6 +65,7 @@ The script will:
 ### Running the Nondimensional Model
 
 ```matlab
+% Make sure CVX and distmesh2d are in your path
 % Run the script
 obstacle2D_cvx_nondimensional
 ```
@@ -143,21 +141,6 @@ The dimensional model includes:
 - Gas constant: `R = 8.314 J/(K·mol)`
 - Activation threshold: `T_star = 263.15 K` (-10°C)
 
-### Domain Parameters
-
-- Horizontal extent: ~110 km
-- Vertical extent: ~1500 m
-- Grid spacing: `dx = 880 m` (dimensional) or `dx = 0.025` (nondimensional)
-
-### Basal Friction Parameters (Example: Experiment #4)
-
-- Rock friction: `β = 2.9×10⁶ Pa^(5/2)·s^(1/2)·m^(-5/2)`
-- Rock variation: `β_var = 5×10⁶ Pa^(5/2)·s^(1/2)·m^(-5/2)`
-- Sediment constant: `sed_const = 19.4×10³ Pa·s/m`
-- Channel strength: `ch_str = 24.5×10³ Pa·s/m`
-- Channel location: `ch_loc = 10 km`
-- Channel decay: `ch_decay = 5.9 km`
-
 ## Output
 
 The scripts generate several visualization plots:
@@ -168,46 +151,19 @@ The scripts generate several visualization plots:
 4. **Temperature field** (dimensional only): 2D temperature distribution
 5. **Basal friction parameterization**: Plot of friction coefficients
 
-## Numerical Methods
+## Citation 
 
-### Finite Element Discretization
-
-- **Element type**: Linear triangular elements
-- **Mesh generation**: Unstructured mesh using distmesh2d
-- **Gradient operators**: Computed via inverse coordinate transformation
-- **Integration**: Trapezoidal rule for boundary integrals
-
-### Optimization
-
-- **Solver**: CVX (convex optimization)
-- **Method**: Interior point method
-- **Constraints**: Non-negative velocity, boundary conditions
-- **Convergence**: Iterative thermal-mechanical coupling (residual < 10⁻³)
-
-## Citation
-
-If you use this code, please cite the accompanying paper:
-
+For more details on this model and application to Institute Ice Stream, please refer to the accompanying paper:
 ```
-[Paper citation will be added here]
+Suckale, Jenny and Elsworth, Cooper W. An antiplane strain model for evaluating shear-margin stability (Ortholine v1.0), under review, 2026
 ```
-
-## License
-
-[Specify license here]
 
 ## Contact
 
-[Add contact information]
+Please contact the authors with any inquiries on this code at cooper.elsworth@gmail.com
 
 ## Acknowledgments
 
 - CVX optimization toolbox developers
 - distmesh2d developers
 - Institute Ice Stream field observations
-
-## References
-
-1. Glen, J. W. (1955). The creep of polycrystalline ice. *Proceedings of the Royal Society of London*, 228(1175), 519-538.
-2. Schoof, C. (2006). A variational approach to ice stream flow. *Journal of Fluid Mechanics*, 556, 227-251.
-3. [Additional references from paper]
